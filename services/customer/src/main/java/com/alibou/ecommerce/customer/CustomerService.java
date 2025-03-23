@@ -4,7 +4,9 @@ import com.alibou.ecommerce.exception.CustomerNotFoundException;
 import jakarta.validation.Valid;
 import org.apache.commons.lang.StringUtils;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class CustomerService {
 
@@ -35,5 +37,12 @@ public class CustomerService {
         if(StringUtils.isNotBlank(customerRequest.lastName())) { customer.setLastName(customerRequest.lastName()); }
         if(StringUtils.isNotBlank(customerRequest.email())) { customer.setEmail(customerRequest.email()); }
         if(Objects.nonNull(customerRequest.address())) { customer.setAddress(customerRequest.address()); }
+    }
+
+    public List<CustomerResponse> findAllCustomers() {
+        return customerRepository.findAll()
+                                            .stream()
+                                            .map(customerMapper::fromCustomer)
+                                            .collect(Collectors.toList());
     }
 }

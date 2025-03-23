@@ -4,6 +4,8 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/customer")
 public class CustomerController {
@@ -23,6 +25,11 @@ public class CustomerController {
     public ResponseEntity<String> updateCustomer(@RequestBody @Valid CustomerRequest customerRequest) {
         customerService.updateCustomer(customerRequest);
         return ResponseEntity.accepted().build();
+    }
+
+    @GetMapping()
+    public ResponseEntity<List<CustomerResponse>> findAll() {
+        return ResponseEntity.ok(customerService.findAllCustomers());
     }
 
 }
