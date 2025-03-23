@@ -3,11 +3,13 @@ package com.alibou.ecommerce.customer;
 import com.alibou.ecommerce.exception.CustomerNotFoundException;
 import jakarta.validation.Valid;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+@Service
 public class CustomerService {
 
     private final CustomerRepository customerRepository;
