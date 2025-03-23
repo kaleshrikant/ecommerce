@@ -22,7 +22,7 @@ public class CustomerController {
     @PutMapping()
     public ResponseEntity<String> updateCustomer(@RequestBody @Valid CustomerRequest customerRequest) {
         customerService.updateCustomer(customerRequest);
-        return ResponseEntity.ok(customerService.updateCustomer(customerRequest));
+        return ResponseEntity.accepted().build();
     }
 
 }
