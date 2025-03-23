@@ -45,4 +45,8 @@ public class CustomerService {
                                             .map(customerMapper::fromCustomer)
                                             .collect(Collectors.toList());
     }
+
+    public Boolean existById(String customerId) {
+        return customerRepository.findById(customerId).isPresent();
+    }
 }
