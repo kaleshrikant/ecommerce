@@ -9,7 +9,7 @@ services:
     volumes:
       - postgres:/data/postgres
     ports:
-      - "5432:5432"
+      - "5433:5432" # changing exposed port to 5432
     networks:
       - microservices-net
     restart: unless-stopped
@@ -24,7 +24,7 @@ services:
     volumes:
       - pgadmin:/var/lib/pgadmin
     ports:
-      - "5050:80"
+      - "5151:80" # changing exposed port to 5151 from 5050
     networks:
       - microservices-net
     restart: unless-stopped
@@ -33,7 +33,7 @@ services:
     container_name: zipkin
     image: openzipkin/zipkin
     ports:
-      - "9411:9411"
+      - "9065:9411"  # changing exposed port to 9065
     networks:
       - microservices-net
 
@@ -41,7 +41,7 @@ services:
     image: mongo
     container_name: mongo_db
     ports:
-      - 27017:27017
+      - 27018:27017 # changing exposed port to 27018
     volumes:
       - mongo:/data
     environment:
@@ -53,7 +53,7 @@ services:
     container_name: mongo_express
     restart: always
     ports:
-      - 8081:8081
+      - 9081:8081 #  changing exposed port to 9081
     environment:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=shrikant
       - ME_CONFIG_MONGODB_ADMINPASSWORD=shrikant
@@ -67,14 +67,14 @@ services:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
     ports:
-      - "22181:2181"
+      - "22182:2181" #  changing exposed port to 22182
     networks:
       - microservices-net
   kafka:
     image: confluentinc/cp-kafka:latest
     container_name: ms_kafka
     ports:
-      - "9092:9092"
+      - "9093:9092" #  changing exposed port to 9093
     depends_on:
       - zookeeper
     environment:
@@ -91,8 +91,8 @@ services:
     container_name: ms-mail-dev
     image: maildev/maildev
     ports:
-      - 1080:1080
-      - 1025:1025
+      - 1180:1080 #  changing exposed port to 1180
+      - 1125:1025 #  changing exposed port to 1125
 
 networks:
   microservices-net:
