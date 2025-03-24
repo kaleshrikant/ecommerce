@@ -4,7 +4,7 @@ services:
     image: postgres
     environment:
       POSTGRES_USER: shrikant
-      POSTGRES_PASSWORD: shrikant
+      POSTGRES_PASSWORD: kale
       PGDATA: /data/postgres
     volumes:
       - postgres:/data/postgres
