@@ -20,7 +20,7 @@ public class Product {
 
     private String name;
     private String description;
-    private double availibility;
+    private double availableQuantity;
     private BigDecimal price;
 
     @ManyToOne
